@@ -23,3 +23,20 @@ df=data[['rate','GDP','unem','rural','ED']]
 sns.pairplot(df,kind="reg",diag_kind="kde")
 
 plt.savefig("all.jpg")
+
+import matplotlib.pyplot as plt
+import pandas as pd
+df=pd.read_csv('2010.csv')
+plt.plot(df.rate, 'yo-',label='2010')
+
+df=pd.read_csv('2015.csv')
+plt.plot(df.rate, 'co-',label='2015')
+
+df=pd.read_csv('2020.csv')
+plt.plot(df.rate, 'ro-',label='2020')
+plt.savefig('changes.jpg')
+plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+plt.xlabel('region') 
+plt.ylabel('rate') 
+plt.title('Divorce rate')
+plt.show() 
