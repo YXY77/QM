@@ -1,0 +1,23 @@
+%matplotlib inline
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import scipy as sp
+
+import scipy.stats as sps
+
+d1 = pd.read_csv('divorce.csv')
+d1.head()
+
+import statsmodels.formula.api as smf
+import statsmodels.api as sm
+
+multi_regression_model_1 = smf.ols(formula='rate ~ time + GDP + unem + ED',data=d1).fit()
+
+# And this gives a big summary of the results:
+print(multi_regression_model_1.summary())
+
+fig = plt.figure(figsize=(10,8))
+fig = sm.graphics.plot_regress_exog(multi_regression_model_1, 'unem', fig=fig)
+plt.savefig("residual.jpg")
